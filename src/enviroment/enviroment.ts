@@ -1,6 +1,6 @@
 
 
-export const enviroment = {
+export const environment = {
     baseUrl: 'http://localhost:3000',
 
 }

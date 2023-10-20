@@ -8,12 +8,8 @@ import { AuthStatus } from '../../../auth/interfaces/auth-status.enum';
 })
 export class DashboardLayoutComponent implements OnInit {
 
-  private userService= inject(AuthService);
-  public user = computed( () => this.userService.currentUser())
-  // get user(){
-  //   return this.userService.currentUser();  
-  // }
-
+  private authService= inject(AuthService);
+  public user = computed( () => this.authService.currentUser())
 
   ngOnInit(): void {
     this.prueba_de_rol()
@@ -23,5 +19,9 @@ export class DashboardLayoutComponent implements OnInit {
     if(this.user()?.name === 'daniel'){
       console.log('prueba para mostrar distintos landing page')
     }
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 }

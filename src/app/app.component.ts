@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'PARCELAS PARRAL';
 
-  private AuthService = inject( AuthService );
+  private authService = inject( AuthService );
   private router = inject( Router )
 
   public finishAuthCheck = computed<boolean>(() => {
-    if(this.AuthService.authStatus () === AuthStatus.checking){
+    if(this.authService.authStatus () === AuthStatus.checking){
       return false;
     } 
     return true;
@@ -23,16 +23,18 @@ export class AppComponent {
 
   public authStatusChangedEffect = effect(() => {
     
-    switch( this.AuthService.authStatus() ){
+    console.log('auth status: ', this.authService.authStatus());
+    
+    switch( this.authService.authStatus() ){
       
       case AuthStatus.checking:
-        return;
+        break;
       case AuthStatus.authenticated:
         this.router.navigateByUrl('/dashboard');
-        return;
+        break;
       case AuthStatus.notAuthenticated:
         this.router.navigateByUrl('/auth/login');
-        return;
+        break;
     }
     
   });

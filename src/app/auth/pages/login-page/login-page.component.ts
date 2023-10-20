@@ -11,24 +11,24 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
 
-  private fb            = inject(FormBuilder);
-  private authService   = inject( AuthService);
-  private router        = inject(Router)
+  private fb          = inject( FormBuilder );
+  private authService = inject( AuthService );
+  private router      = inject( Router )
 
   public myForm: FormGroup = this.fb.group({
     email:    ['daniel@daniel.com', [ Validators.required, Validators.email ]],
-    password: ['', [ Validators.required, Validators.minLength(6) ]],
-  })
+    password: ['123123', [ Validators.required, Validators.minLength(6) ]],
+  });
 
   login(){
-    const {email, password} = this.myForm.value;
-    console.log(this.myForm.value);
-    this.authService.login(email,password)
-    .subscribe({
-      next: () => this.router.navigateByUrl('/dashboard'),
-      error: (message) => {
-        Swal.fire('Error', message, 'error')
-      }
-    });
+    const { email, password } = this.myForm.value;
+    
+    this.authService.login(email, password)
+      .subscribe({
+        next: () => this.router.navigateByUrl('/dashboard'),
+        error: (message) => {
+          Swal.fire('Error', message, 'error' )
+        }
+      });
   }
 }
