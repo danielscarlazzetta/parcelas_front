@@ -1,1 +1,9 @@
-<p>listar works!</p>
+
+<div *ngFor="let parcela of allParcelaData">
+    <p>Valor: {{ parcela.valor }}</p>
+    <p>Dirección: {{ parcela.direccion }}</p>
+    <p>Ubicación:</p>
+    <ul>
+        <li *ngFor="let ubicacionItem of parcela.ubicacion">{{ ubicacionItem }}</li>
+    </ul>
+</div>
