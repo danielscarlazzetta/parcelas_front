@@ -3,5 +3,11 @@
 <hr>
 <pre>caca {{ user() | json }}</pre>
 
+<ul>
+    <li><strong>Nombre:</strong> {{ user()?.name }}</li>
+    <li><strong>Roles:</strong> {{ user()?.roles }}</li>
+    <li><strong>Correo Electrónico:</strong> {{ user()?.email }}</li>
+  </ul>
+
 <br>
 <span routerLink="/auth/login">Ir a login</span>
