@@ -4,11 +4,6 @@ import { isNotAuthenticatedGuard,isAuthenticatedGuard } from './auth/guards';
 
 const routes: Routes = [
   {
-    path: 'index',
-    //guards
-    loadChildren: () => import('./principal/principal.module').then(m => m.PrincipalModule)
-  },
-  {
     path: 'auth',
     canActivate: [isNotAuthenticatedGuard],
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
