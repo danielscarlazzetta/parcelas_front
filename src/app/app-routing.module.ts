@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
+    path: 'parcelas',
+    loadChildren: () => import('./parcelas/parcelas.module').then(m => m.ParcelasModule)
+  },
+  {
     path:'**',
     redirectTo: 'auth',
   }

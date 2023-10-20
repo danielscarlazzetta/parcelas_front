@@ -11,33 +11,33 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'PARCELAS PARRAL';
 
-  private authService = inject( AuthService );
-  private router = inject( Router )
+  // private authService = inject( AuthService );
+  // private router = inject( Router )
 
-  public finishAuthCheck = computed<boolean>(() => {
-    if(this.authService.authStatus () === AuthStatus.checking){
-      return false;
-    } 
-    return true;
-  });
+  // public finishAuthCheck = computed<boolean>(() => {
+  //   if(this.authService.authStatus () === AuthStatus.checking){
+  //     return false;
+  //   } 
+  //   return true;
+  // });
 
-  public authStatusChangedEffect = effect(() => {
+  // public authStatusChangedEffect = effect(() => {
     
-    console.log('auth status: ', this.authService.authStatus());
+  //   console.log('auth status: ', this.authService.authStatus());
     
-    switch( this.authService.authStatus() ){
+  //   switch( this.authService.authStatus() ){
       
-      case AuthStatus.checking:
-        break;
-      case AuthStatus.authenticated:
-        this.router.navigateByUrl('/dashboard');
-        break;
-      case AuthStatus.notAuthenticated:
-        this.router.navigateByUrl('/auth/login');
-        break;
-    }
+  //     case AuthStatus.checking:
+  //       break;
+  //     case AuthStatus.authenticated:
+  //       this.router.navigateByUrl('/dashboard');
+  //       break;
+  //     case AuthStatus.notAuthenticated:
+  //       this.router.navigateByUrl('/auth/login');
+  //       break;
+  //   }
     
-  });
+  // });
 
 
 }

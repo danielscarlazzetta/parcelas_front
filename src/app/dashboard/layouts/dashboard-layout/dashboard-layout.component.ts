@@ -1,6 +1,7 @@
 import { Component, OnInit, computed, inject } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { AuthStatus } from '../../../auth/interfaces/auth-status.enum';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './dashboard-layout.component.html',
@@ -9,7 +10,9 @@ import { AuthStatus } from '../../../auth/interfaces/auth-status.enum';
 export class DashboardLayoutComponent implements OnInit {
 
   private authService= inject(AuthService);
-  public user = computed( () => this.authService.currentUser())
+  private router = inject( Router )
+  public user = computed( () => this.authService.currentUser());
+
 
   ngOnInit(): void {
     this.prueba_de_rol()
@@ -23,5 +26,6 @@ export class DashboardLayoutComponent implements OnInit {
 
   onLogout(){
     this.authService.logout();
+    this.router.navigateByUrl('/auth/login');
   }
 }
